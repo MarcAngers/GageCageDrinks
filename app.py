@@ -10,7 +10,7 @@ MAKING_DRINK = False
 
 @app.route("/")
 def index():
-	return render_template("drinks.html")
+	return render_template("index.html")
 
 @app.route("/makedrink", methods=['POST'])
 def makedrink():
