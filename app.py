@@ -2,7 +2,13 @@ from flask import Flask
 from flask import request, abort, render_template
 from flask_cors import CORS
 import json
-from activatePumps import setup, activatePumps, cleanup
+import platform
+
+# Raspberry Pi GPIO not available in windows dev environments, so use dummy functions instead for testing (there's probably a better way to do this lol)
+if platform.system() == 'Windows':
+	from activatePumpsDev import setup, activatePumps, cleanup
+else:
+	from activatePumps import setup, activatePumps, cleanup
 
 app = Flask(__name__)
 CORS(app)
